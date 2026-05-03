@@ -15,15 +15,15 @@
 
 /* Minimal sharp design */
 .sharp-container {
-  @apply bg-white p-8 relative overflow-hidden;
+  @apply bg-white/70 backdrop-blur-xl p-10 relative overflow-hidden rounded-[48px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] border border-teal-50/50;
 }
 
 .sharp-btn {
-  @apply relative overflow-hidden bg-teal-600 text-white py-2 px-6 transition-all duration-200 ease-out hover:bg-teal-700 disabled:opacity-30 disabled:cursor-not-allowed;
+  @apply relative overflow-hidden bg-teal-600 text-white py-4 px-8 rounded-full transition-all duration-200 ease-out hover:bg-teal-700 disabled:opacity-30 disabled:cursor-not-allowed font-medium;
 }
 
 .sharp-input {
-  @apply w-full bg-teal-50/30 text-teal-900 px-4 py-3 focus:outline-none focus:bg-teal-50 transition-all placeholder-teal-300;
+  @apply w-full bg-teal-50/30 text-teal-900 px-6 py-4 rounded-full focus:outline-none focus:bg-teal-50 transition-all placeholder-teal-300 border border-transparent focus:border-teal-100;
 }
 
 /* Remove decorative elements that were too dark/heavy */
@@ -40,6 +40,27 @@
   content: '';
   @apply absolute inset-0 rounded-full border border-teal-100 opacity-75;
   animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.spinny-container {
+  @apply fixed bottom-0 left-1/2 z-0 pointer-events-none;
+  width: 150vw;
+  max-width: 1400px;
+  transform: translateX(-50%) translateY(50%);
+}
+
+.spinny-container img {
+  @apply w-full h-auto max-w-none;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {

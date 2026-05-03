@@ -14,6 +14,7 @@ const btnStop = document.getElementById('btnStop');
 const actionDesc = document.getElementById('actionDesc');
 const alertBanner = document.getElementById('alertBanner');
 const alertMessage = document.getElementById('alertMessage');
+const tapIndicator = document.getElementById('tapIndicator');
 
 // Initialize
 function init() {
@@ -37,26 +38,26 @@ function init() {
 function setMode(mode) {
   writeMode = mode;
   if (mode === 'url') {
-    tabUrl.className = 'flex-1 py-2 bg-teal-600 text-white transition-colors flex justify-center items-center';
-    tabText.className = 'flex-1 py-2 bg-white text-teal-600 hover:bg-teal-50 transition-colors flex justify-center items-center';
+    tabUrl.className = 'flex-1 py-2 bg-teal-600 text-white rounded-full transition-all flex justify-center items-center shadow-sm';
+    tabText.className = 'flex-1 py-2 bg-transparent text-teal-600 hover:bg-white/50 rounded-full transition-all flex justify-center items-center';
     payloadInput.placeholder = 'https://example.com';
     if (payloadInput.value === 'hello world') payloadInput.value = 'https://example.com';
   } else {
-    tabText.className = 'flex-1 py-2 bg-teal-600 text-white transition-colors flex justify-center items-center';
-    tabUrl.className = 'flex-1 py-2 bg-white text-teal-600 hover:bg-teal-50 transition-colors flex justify-center items-center';
+    tabText.className = 'flex-1 py-2 bg-teal-600 text-white rounded-full transition-all flex justify-center items-center shadow-sm';
+    tabUrl.className = 'flex-1 py-2 bg-transparent text-teal-600 hover:bg-white/50 rounded-full transition-all flex justify-center items-center';
     payloadInput.placeholder = 'hello world';
     if (payloadInput.value === 'https://example.com') payloadInput.value = 'hello world';
   }
 }
 
 function showAlert(msg, type = 'info') {
-  alertBanner.classList.remove('hidden', 'border-red-500', 'border-teal-500');
+  alertBanner.classList.remove('hidden');
   
   if (type === 'error') {
-    alertBanner.className = 'bg-red-50 p-4';
+    alertBanner.className = 'bg-red-50 p-4 rounded-3xl border border-red-100';
     alertMessage.className = 'text-red-700 text-sm font-medium';
   } else {
-    alertBanner.className = 'bg-teal-50 p-4';
+    alertBanner.className = 'bg-teal-50 p-4 rounded-3xl border border-teal-100';
     alertMessage.className = 'text-teal-700 text-sm font-medium';
   }
   
@@ -74,10 +75,12 @@ function updateUIStatus(scanning, title, desc) {
   if (scanning) {
     btnWrite.classList.add('hidden');
     btnStop.classList.remove('hidden');
+    tapIndicator.classList.remove('hidden');
     actionDesc.classList.add('animate-pulse');
   } else {
     btnWrite.classList.remove('hidden');
     btnStop.classList.add('hidden');
+    tapIndicator.classList.add('hidden');
     actionDesc.classList.remove('animate-pulse');
   }
 }
