@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-raleway: 'Raleway', sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-raleway);
+    @apply bg-white text-teal-900 min-h-screen antialiased selection:bg-teal-100 selection:text-teal-900 lowercase;
+  }
+}
+
+/* Minimal sharp design */
+.sharp-container {
+  @apply bg-white p-8 relative overflow-hidden;
+}
+
+.sharp-btn {
+  @apply relative overflow-hidden bg-teal-600 text-white py-2 px-6 transition-all duration-200 ease-out hover:bg-teal-700 disabled:opacity-30 disabled:cursor-not-allowed;
+}
+
+.sharp-input {
+  @apply w-full bg-teal-50/30 text-teal-900 px-4 py-3 focus:outline-none focus:bg-teal-50 transition-all placeholder-teal-300;
+}
+
+/* Remove decorative elements that were too dark/heavy */
+.bg-teal-blur {
+  @apply absolute w-[50vw] h-[50vw] bg-teal-50 blur-[120px] rounded-full pointer-events-none;
+}
+
+.pulse-circle {
+  @apply absolute w-24 h-24 rounded-full bg-none;
+  animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.pulse-circle::after {
+  content: '';
+  @apply absolute inset-0 rounded-full border border-teal-100 opacity-75;
+  animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

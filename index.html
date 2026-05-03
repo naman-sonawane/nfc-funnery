@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>:)</title>
+  </head>
+  <body>
+    <div id="app" class="min-h-screen flex flex-col items-center justify-center p-6 bg-white">
+      
+      <div class="w-full max-w-md space-y-8">
+        <header class="flex justify-between items-center pb-4">
+          <div class="flex items-center gap-2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-teal-400">
+              <path d="M12 2C12 2 13 10 22 12C13 14 12 22 12 22C12 22 11 14 2 12C11 10 12 2 12 2Z" fill="currentColor"/>
+            </svg>
+            <p class="text-teal-400 text-sm">nfc writer</p>
+          </div>
+        </header>
+
+        <div class="sharp-container space-y-6">
+          <div class="space-y-4">
+            <div class="flex bg-teal-50/50">
+              <button class="flex-1 py-2 bg-teal-600 text-white transition-colors flex justify-center items-center" id="tabUrl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              </button>
+              <button class="flex-1 py-2 bg-white text-teal-600 hover:bg-teal-50 transition-colors flex justify-center items-center" id="tabText">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
+              </button>
+            </div>
+
+            <div class="space-y-2">
+              <input type="text" id="payloadInput" class="sharp-input" placeholder="https://example.com" value="https://example.com" />
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center py-10">
+            <div class="pulse-circle"></div>
+            <p class="text-teal-400 text-sm z-10" id="actionDesc">tap below</p>
+          </div>
+
+          <div id="alertBanner" class="hidden bg-teal-50 p-4">
+            <p id="alertMessage" class="text-teal-700 text-sm font-medium"></p>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <button id="btnWrite" class="sharp-btn w-full">write tag</button>
+            <button id="btnStop" class="sharp-btn w-full !bg-white !text-red-500 !border-red-100 hover:!bg-red-50 hidden">cancel</button>
+          </div>
+        </div>
+
+        <footer class="pt-8 text-center text-teal-200 text-[10px] flex justify-between items-center">
+          <div class="flex items-center gap-1">
+            <span>- naman :)</span>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+
