@@ -11,15 +11,16 @@ const tabText = document.getElementById('tabText');
 const payloadInput = document.getElementById('payloadInput');
 const btnWrite = document.getElementById('btnWrite');
 const btnStop = document.getElementById('btnStop');
-const statusIndicator = document.getElementById('statusIndicator');
-const actionStatus = document.getElementById('actionStatus');
 const actionDesc = document.getElementById('actionDesc');
 const alertBanner = document.getElementById('alertBanner');
 const alertMessage = document.getElementById('alertMessage');
 
 // Initialize
 function init() {
-  if (!('NDEFReader' in window)) {
+  if (!window.isSecureContext) {
+    showAlert('web nfc requires https or localhost. if testing on mobile, use port forwarding.', 'error');
+    btnWrite.disabled = true;
+  } else if (!('NDEFReader' in window)) {
     showAlert('web nfc is not supported on this device. please use chrome on android.', 'error');
     btnWrite.disabled = true;
   }
@@ -68,19 +69,16 @@ function hideAlert() {
 
 function updateUIStatus(scanning, title, desc) {
   isScanning = scanning;
-  actionStatus.textContent = title.toLowerCase();
   actionDesc.textContent = desc.toLowerCase();
   
   if (scanning) {
-    statusIndicator.textContent = 'scanning';
-    statusIndicator.className = 'text-teal-500 text-xs font-medium animate-pulse';
     btnWrite.classList.add('hidden');
     btnStop.classList.remove('hidden');
+    actionDesc.classList.add('animate-pulse');
   } else {
-    statusIndicator.textContent = 'ready';
-    statusIndicator.className = 'text-teal-300 text-xs font-medium';
     btnWrite.classList.remove('hidden');
     btnStop.classList.add('hidden');
+    actionDesc.classList.remove('animate-pulse');
   }
 }
 
